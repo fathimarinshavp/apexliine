@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Reveal from '../../../components/Reveal';
+import { ScrollRevealText, ZoomText, ScrollColorText } from '../../../components/animations';
 import SiteHeader from '../../../components/SiteHeader';
 import SiteFooter from '../../../components/SiteFooter';
 import { getServiceById, services } from '../../data/services';
@@ -48,8 +49,8 @@ export default async function ServicePage({ params }) {
                 <span>Back to services</span>
               </Link>
               <p className={styles.eyebrow}>Service {service.number}</p>
-              <h1 id="service-title" className={styles.title}>{service.title}</h1>
-              <p className={styles.lead}>{service.description}</p>
+              <ZoomText as="h1" id="service-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>{service.title}</ScrollRevealText></ZoomText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">{service.description}</ScrollColorText>
             </Reveal>
 
             <Reveal className={styles.heroMedia} delay={100}>

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '../../components/Reveal';
+import { ScrollRevealText, ZoomText, ScrollColorText } from '../../components/animations';
 import SiteHeader from '../../components/SiteHeader';
 import SiteFooter from '../../components/SiteFooter';
 import { productGroups } from '../data/products';
@@ -21,8 +22,8 @@ export default function ProductsPage() {
           <div className={styles.container}>
             <Reveal>
               <p className={styles.eyebrow}>Products</p>
-              <h1 id="products-page-title" className={styles.title}>Everything you need, printed.</h1>
-              <p className={styles.lead}>Explore our product categories, from everyday business essentials to packaging, apparel, and signage.</p>
+              <ZoomText as="h1" id="products-page-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>Everything you need, printed.</ScrollRevealText></ZoomText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">Explore our product categories, from everyday business essentials to packaging, apparel, and signage.</ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
               <div className={styles.imageFrame}>

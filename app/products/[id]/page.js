@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Reveal from '../../../components/Reveal';
+import { ScrollRevealText, ZoomText, ScrollColorText } from '../../../components/animations';
 import SiteHeader from '../../../components/SiteHeader';
 import SiteFooter from '../../../components/SiteFooter';
 import { getProductGroupById, productGroups } from '../../data/products';
@@ -42,8 +43,8 @@ export default async function ProductPage({ params }) {
                 <span>Back to products</span>
               </Link>
               <p className={styles.eyebrow}>Product category {group.number}</p>
-              <h1 id="product-title" className={styles.title}>{group.title}</h1>
-              <p className={styles.lead}>{group.description}</p>
+              <ZoomText as="h1" id="product-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>{group.title}</ScrollRevealText></ZoomText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">{group.description}</ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
               <div className={styles.imageFrame}>

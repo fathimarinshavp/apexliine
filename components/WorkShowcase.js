@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollRevealText } from './animations';
 
 const serviceLetters = 'Services'.split('');
 
@@ -172,7 +173,9 @@ export default function WorkShowcase({ services = [] }) {
             </div>
 
             <h2 className="work-showcase__heading" id="services-heading" data-ws-heading>
-              Work we&apos;re proud of
+              <ScrollRevealText as="span" by="words" stagger={0.05} y={32}>
+                Work we&apos;re proud of
+              </ScrollRevealText>
             </h2>
           </div>
 

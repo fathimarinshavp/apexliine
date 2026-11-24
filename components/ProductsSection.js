@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from './Reveal';
 import { productGroups } from '../app/data/products';
+import { ScrollRevealText, ZoomText } from './animations';
 
 export default function ProductsSection() {
   return (
@@ -9,11 +10,14 @@ export default function ProductsSection() {
       <div className="shell catalogue__layout">
         <Reveal className="catalogue__intro">
           <p className="eyebrow">PRODUCT CATALOGUE</p>
-          <h2 id="products-heading">Everything you need, printed.</h2>
-          <p>
-            From everyday stationery to custom packaging and branded merchandise, here is what we can produce for
-            your business.
-          </p>
+          <ZoomText as="h2" id="products-heading">
+            <ScrollRevealText as="span" by="words" stagger={0.04} y={30}>
+              Everything you need, printed.
+            </ScrollRevealText>
+          </ZoomText>
+          <ScrollRevealText as="p" by="words" stagger={0.015} y={18} delay={0.05}>
+            From everyday stationery to custom packaging and branded merchandise, here is what we can produce for your business.
+          </ScrollRevealText>
           <span className="catalogue__count">08 product categories</span>
         </Reveal>
 

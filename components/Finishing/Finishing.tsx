@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
 import styles from './Finishing.module.css';
+import { ScrollRevealText, ZoomText } from '../animations';
 
 type FinishingItem = {
   title: string;
@@ -91,13 +92,17 @@ export default function Finishing() {
     <section id="finishing" aria-labelledby="finishing-title" className={styles.finishing}>
       <div className={styles.container}>
         <span className={styles.accent} aria-hidden="true" />
-        <h2 id="finishing-title" className={styles.heading}>
-          <span className={styles.light}>Print</span>{' '}
-          <span className={styles.bold}>Finishing</span>
-        </h2>
-        <p className={styles.subtitle}>
+        <ZoomText as="h2" id="finishing-title" className={styles.heading}>
+          <ScrollRevealText as="span" className={styles.light} by="words" stagger={0.05} y={28}>
+            Print
+          </ScrollRevealText>{' '}
+          <ScrollRevealText as="span" className={styles.bold} by="words" stagger={0.05} y={28} delay={0.06}>
+            Finishing
+          </ScrollRevealText>
+        </ZoomText>
+        <ScrollRevealText as="p" className={styles.subtitle} by="words" stagger={0.02} y={18} delay={0.08}>
           The final touches that make your print feel premium.
-        </p>
+        </ScrollRevealText>
 
         <div className={styles.grid}>
           {items.map((item) => (

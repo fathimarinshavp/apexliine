@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '../../components/Reveal';
+import { ScrollRevealText, ZoomText, ScrollColorText } from '../../components/animations';
 import SiteHeader from '../../components/SiteHeader';
 import SiteFooter from '../../components/SiteFooter';
 import { services } from '../data/services';
@@ -21,8 +22,8 @@ export default function ServicesPage() {
           <div className={styles.container}>
             <Reveal>
               <p className={styles.eyebrow}>Services</p>
-              <h1 id="services-page-title" className={styles.title}>Print services built for your brand.</h1>
-              <p className={styles.lead}>From digital and offset printing to finishing, design, and packaging, we handle every stage with care and precision.</p>
+              <ZoomText as="h1" id="services-page-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>Print services built for your brand.</ScrollRevealText></ZoomText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">From digital and offset printing to finishing, design, and packaging, we handle every stage with care and precision.</ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
               <div className={styles.imageFrame}>

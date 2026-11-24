@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './HeroSection.module.css';
+import { AnimatedGradientText, ParallaxText, ScrollRevealText } from './animations';
 
 const SHAPE_PATH =
   'M146 0 H564 A16 16 0 0 1 580 16 V524 A16 16 0 0 1 564 540 H316 A16 16 0 0 0 300 556 V624 A16 16 0 0 1 284 640 H16 A16 16 0 0 1 0 624 V116 A16 16 0 0 1 16 100 H114 A16 16 0 0 0 130 84 V16 A16 16 0 0 1 146 0 Z';
@@ -17,19 +18,27 @@ export default function HeroSection() {
 
       <div className={styles.layout}>
         <div className={styles.content}>
-          <p className={styles.eyebrow}>Apexline Graphics LLC</p>
+          <ScrollRevealText as="p" className={styles.eyebrow} by="words" stagger={0.03} y={18}>
+            Apexline Graphics LLC
+          </ScrollRevealText>
 
           <h1 id="hero-title" className={styles.heading}>
-            <span>Print that</span>{' '}
-            <span>makes your</span>{' '}
-            <span>brand stand out.</span>
+            <ScrollRevealText as="span" by="words" stagger={0.06} y={40}>
+              Print that
+            </ScrollRevealText>{' '}
+            <ScrollRevealText as="span" by="words" stagger={0.06} y={40} delay={0.08}>
+              makes your
+            </ScrollRevealText>{' '}
+            <ScrollRevealText as="span" by="words" stagger={0.06} y={40} delay={0.16}>
+              brand <AnimatedGradientText>stand out.</AnimatedGradientText>
+            </ScrollRevealText>
           </h1>
 
-          <p className={styles.statement}>
-            Digital, offset and UV printing
-            <br />
-            crafted with care from start to finish.
-          </p>
+          <ParallaxText as="p" className={styles.statement} y={18}>
+            <ScrollRevealText as="span" by="words" stagger={0.025} y={24} delay={0.15}>
+              Digital, offset and UV printing crafted with care from start to finish.
+            </ScrollRevealText>
+          </ParallaxText>
 
           <a className={styles.link} href="#services">
             <span>View our services</span>

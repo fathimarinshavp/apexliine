@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '../../components/Reveal';
+import { ScrollRevealText, ZoomText, ScrollColorText } from '../../components/animations';
 import SiteHeader from '../../components/SiteHeader';
 import SiteFooter from '../../components/SiteFooter';
 import styles from '../services/[id]/page.module.css';
@@ -45,8 +46,8 @@ export default function AboutPage() {
                 <span>Back to home</span>
               </Link>
               <p className={styles.eyebrow}>About us</p>
-              <h1 id="about-page-title" className={styles.title}>Built for brands that value print.</h1>
-              <p className={styles.lead}>We are an independent printing house turning ideas into things you can hold, with care from first proof to final finish.</p>
+              <ZoomText as="h1" id="about-page-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>Built for brands that value print.</ScrollRevealText></ZoomText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">We are an independent printing house turning ideas into things you can hold, with care from first proof to final finish.</ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
               <div className={styles.imageFrame}>

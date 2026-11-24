@@ -1,4 +1,5 @@
 import Reveal from '../../components/Reveal';
+import { ScrollRevealText, ZoomText, ScrollColorText } from '../../components/animations';
 import SiteHeader from '../../components/SiteHeader';
 import SiteFooter from '../../components/SiteFooter';
 import ContactForm from '../../components/ContactForm';
@@ -19,8 +20,8 @@ export default function ContactPage() {
           <div className={styles.container}>
             <Reveal className={styles.intro}>
               <p className={styles.eyebrow}>Contact</p>
-              <h1 id="contact-page-title" className={styles.title}>Let's print something great.</h1>
-              <p className={styles.lead}>Tell us about your project and we'll help with materials, finishes, timelines, and the right print approach.</p>
+              <ZoomText as="h1" id="contact-page-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>Let&apos;s print something great.</ScrollRevealText></ZoomText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">Tell us about your project and we&apos;ll help with materials, finishes, timelines, and the right print approach.</ScrollColorText>
               <div className={styles.details}>
                 <div>
                   <p className={styles.label}>Email</p>
@@ -47,7 +48,7 @@ export default function ContactPage() {
           <div className={styles.infoContainer}>
             <Reveal className={styles.infoCard}>
               <p className={styles.label}>Project enquiries</p>
-              <p className={styles.infoText}>Share your quantity, size, material ideas, and timeline. We'll come back with practical options and a clear quote.</p>
+              <p className={styles.infoText}>Share your quantity, size, material ideas, and timeline. we&apos;ll come back with practical options and a clear quote.</p>
             </Reveal>
             <Reveal className={styles.infoCard} delay={60}>
               <p className={styles.label}>File support</p>
@@ -55,7 +56,7 @@ export default function ContactPage() {
             </Reveal>
             <Reveal className={styles.infoCard} delay={120}>
               <p className={styles.label}>Turnaround</p>
-              <p className={styles.infoText}>From quick digital runs to larger production jobs, we'll recommend a schedule that fits your deadline.</p>
+              <p className={styles.infoText}>From quick digital runs to larger production jobs, we&apos;ll recommend a schedule that fits your deadline.</p>
             </Reveal>
           </div>
         </section>
