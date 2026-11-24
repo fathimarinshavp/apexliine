@@ -1,0 +1,132 @@
+.page {
+  --ct-bg: #F3EFE6;
+  --ct-ink: #111111;
+  --ct-muted: #5E5E5E;
+  --ct-border: #DDD7C8;
+  background: var(--ct-bg);
+  color: var(--ct-ink);
+  font-family: var(--font-hanken-grotesk), 'Hanken Grotesk', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --ct-bg: #1B1A24;
+    --ct-ink: #F3F3F3;
+    --ct-muted: #A0A0A0;
+    --ct-border: #33313F;
+  }
+}
+
+.hero {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  padding: clamp(60px, 7vw, 140px) clamp(20px, 3.7vw, 70px);
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(56px, 8vw, 130px);
+  align-items: start;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--ct-muted);
+  font-size: clamp(13px, 0.9vw, 16px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: clamp(24px, 3vw, 44px) 0 0;
+  max-width: 11ch;
+  color: var(--ct-ink);
+  font-size: clamp(48px, 5.2vw, 96px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 42ch;
+  margin: clamp(24px, 3vw, 40px) 0 0;
+  color: var(--ct-muted);
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.6;
+}
+
+.details {
+  display: grid;
+  gap: 24px;
+  margin-top: clamp(40px, 5vw, 72px);
+}
+
+.infoSection {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  padding: 0 clamp(20px, 3.7vw, 70px) clamp(60px, 7vw, 120px);
+  background: var(--ct-bg);
+}
+
+.infoContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.infoCard {
+  padding-top: 24px;
+  border-top: 1px solid var(--ct-border);
+}
+
+.infoText {
+  margin: 0;
+  color: var(--ct-muted);
+  font-size: clamp(14px, 1vw, 17px);
+  line-height: 1.7;
+}
+
+.label {
+  margin: 0 0 8px;
+  color: var(--ct-muted);
+  font-size: clamp(13px, 0.9vw, 16px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.value {
+  margin: 0;
+  color: var(--ct-ink);
+  font-size: clamp(16px, 1.2vw, 22px);
+  line-height: 1.5;
+}
+
+.formWrap {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .container,
+  .infoContainer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .title,
+  .lead {
+    max-width: 100%;
+  }
+}

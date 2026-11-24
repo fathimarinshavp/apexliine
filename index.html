@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agency Hero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8f8f8;
+        --ink: #111111;
+        --muted: #5e5e5e;
+        --teal: #a9d6d3;
+        --peach: #f2b79a;
+        --grey-blue: #b8c2cc;
+        --lavender: #d4d3ee;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+      }
+
+      body {
+        color: var(--ink);
+        font-family: 'Plus Jakarta Sans', 'Hanken Grotesk', 'Instrument Sans', system-ui, -apple-system,
+          BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .canvas {
+        position: relative;
+        display: grid;
+        min-height: 100svh;
+        grid-template-rows: auto 1fr auto;
+        padding: 5%;
+        overflow: hidden;
+        background: var(--bg);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        color: var(--muted);
+        font-size: clamp(12px, 1.65vw, 26px);
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        line-height: 1.2;
+        text-transform: uppercase;
+      }
+
+      .card {
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .card--disc {
+        z-index: 1;
+        top: 30.8%;
+        left: 20.1%;
+        width: clamp(190px, 22.6vw, 360px);
+        height: clamp(150px, 17.6vw, 280px);
+        border-radius: 20px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 12% 90%, var(--teal) 0 30%, transparent 62%),
+          linear-gradient(160deg, var(--grey-blue) 0%, var(--teal) 48%, var(--peach) 100%);
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.1);
+        animation: cardFade 0.7s ease 0.08s both;
+      }
+
+      .card--disc::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 17%;
+        width: 66%;
+        height: 70%;
+        border-radius: 47% 53% 45% 55% / 55% 45% 52% 48%;
+        background:
+          radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.96) 0 5%, transparent 18%),
+          radial-gradient(circle at 38% 30%, #f8e9df 0%, #d7b9aa 36%, #8c8f95 70%, #657580 100%);
+        box-shadow: inset -12px -18px 30px rgba(35, 45, 55, 0.28), 14px 18px 28px rgba(35, 45, 55, 0.18);
+        transform: rotate(-18deg);
+      }
+
+      .card--disc::after {
+        content: '';
+        position: absolute;
+        top: 27%;
+        left: 30%;
+        width: 26%;
+        height: 10%;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.55);
+        filter: blur(5px);
+        transform: rotate(-22deg);
+      }
+
+      .card--swoosh {
+        z-index: 2;
+        top: 40.7%;
+        left: 48.9%;
+        width: clamp(280px, 32.7vw, 520px);
+        height: clamp(220px, 23.9vw, 380px);
+        border-radius: 24px;
+        overflow: hidden;
+        background: var(--lavender);
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+        animation: cardFade 0.7s ease 0.18s both;
+      }
+
+      .card--swoosh::before,
+      .card--swoosh::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ffffff 0%, #f7f7ff 55%, #e7e7f7 100%);
+      }
+
+      .card--swoosh::before {
+        top: 8%;
+        left: -20%;
+        width: 130%;
+        height: 94%;
+        border-radius: 48% 52% 50% 50% / 62% 38% 58% 42%;
+        transform: rotate(-17deg);
+      }
+
+      .card--swoosh::after {
+        right: -10%;
+        bottom: -16%;
+        width: 88%;
+        height: 64%;
+        border-radius: 60% 40% 52% 48% / 48% 62% 38% 52%;
+        transform: rotate(-11deg);
+      }
+
+      .stage {
+        position: relative;
+        z-index: 3;
+        display: grid;
+        align-items: center;
+        min-height: 0;
+      }
+
+      .headline {
+        margin: 0 0 0 14.2%;
+        font-size: clamp(48px, 8vw, 128px);
+        font-weight: 600;
+        letter-spacing: -0.05em;
+        line-height: 0.95;
+        color: var(--ink);
+      }
+
+      .headline span {
+        display: block;
+      }
+
+      .bottombar {
+        position: relative;
+        z-index: 4;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      .intro {
+        max-width: 26em;
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(14px, 1.65vw, 26px);
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .button {
+        display: inline-flex;
+        width: clamp(240px, 27.8vw, 442px);
+        min-height: clamp(56px, 6vw, 95px);
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--ink);
+        border-radius: 999px;
+        background: var(--bg);
+        color: var(--ink);
+        font: inherit;
+        font-size: clamp(13px, 1.65vw, 26px);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+
+      .button:hover {
+        background: var(--ink);
+        color: var(--bg);
+      }
+
+      .button:focus-visible {
+        outline: 3px solid var(--ink);
+        outline-offset: 4px;
+      }
+
+      @keyframes cardFade {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .card--disc {
+          top: 27%;
+          left: 10%;
+        }
+
+        .card--swoosh {
+          top: 38%;
+          left: 42%;
+        }
+
+        .headline {
+          margin-left: 8%;
+        }
+
+        .bottombar {
+          gap: 24px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .canvas {
+          padding: 24px 18px;
+        }
+
+        .topbar {
+          font-size: 12px;
+        }
+
+        .stage {
+          min-height: 52svh;
+        }
+
+        .headline {
+          margin-left: 0;
+          font-size: clamp(34px, 10.5vw, 46px);
+          line-height: 0.98;
+        }
+
+        .card--disc {
+          top: 18%;
+          left: 8%;
+          width: 180px;
+          height: 140px;
+        }
+
+        .card--swoosh {
+          top: 30%;
+          left: 30%;
+          width: 250px;
+          height: 190px;
+        }
+
+        .bottombar {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 28px;
+        }
+
+        .intro {
+          max-width: none;
+          font-size: 16px;
+        }
+
+        .button {
+          width: 100%;
+          min-height: 64px;
+          font-size: 15px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .card {
+          animation: none;
+        }
+
+        .button {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="canvas">
+      <div class="topbar" aria-label="Agency introduction">
+        <span>NICE TO MEET YOU</span>
+        <span>OUR AGENCY</span>
+      </div>
+
+      <div class="card card--disc" aria-hidden="true"></div>
+      <div class="card card--swoosh" aria-hidden="true"></div>
+
+      <section class="stage" aria-labelledby="hero-title">
+        <h1 class="headline" id="hero-title">
+          <span>Shaping digital</span>
+          <span>stories and</span>
+          <span>spaces worldwide.</span>
+        </h1>
+      </section>
+
+      <div class="bottombar">
+        <p class="intro">
+          Independent studio crafting thoughtful<br />
+          brands, interfaces, and experiences.
+        </p>
+        <button class="button" type="button">VIEW SELECTED WORK</button>
+      </div>
+    </main>
+  </body>
+</html>

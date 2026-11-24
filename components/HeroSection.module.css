@@ -1,0 +1,141 @@
+.hero {
+  --hero-bg: #F8F8F8;
+  --hero-ink: #111111;
+  --hero-body: #222222;
+  --hero-muted: #5E5E5E;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  padding: clamp(60px, 7vw, 140px) clamp(20px, 3.7vw, 70px);
+  background: var(--hero-bg);
+  color: var(--hero-body);
+  font-family: var(--font-hanken-grotesk), 'Hanken Grotesk', sans-serif;
+}
+
+.hero *,
+.hero *::before,
+.hero *::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero {
+    --hero-bg: #141414;
+    --hero-ink: #F3F3F3;
+    --hero-body: #D0D0D0;
+    --hero-muted: #A0A0A0;
+  }
+}
+
+.svgDefs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 58% 30%;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+.eyebrow {
+  margin: 0 0 clamp(24px, 3vw, 44px);
+  color: var(--hero-muted);
+  font-size: clamp(13px, 0.9vw, 16px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0;
+  color: var(--hero-ink);
+  font-size: clamp(64px, 7.5vw, 144px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.heading span {
+  display: block;
+}
+
+.statement {
+  max-width: 45vw;
+  margin: 7vw 0 0 11.5vw;
+  color: var(--hero-ink);
+  font-size: clamp(22px, 2.9vw, 56px);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: clamp(40px, 5vw, 80px) 0 0 11.5vw;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--hero-ink);
+  color: var(--hero-ink);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.media {
+  justify-self: end;
+  width: min(30vw, 580px, 100%);
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 580 / 640;
+  overflow: hidden;
+  -webkit-clip-path: url(#heroShape);
+  clip-path: url(#heroShape);
+}
+
+.image {
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(40px, 7vw, 80px);
+  }
+
+  .statement {
+    max-width: 100%;
+    margin: clamp(40px, 7vw, 80px) 0 0;
+  }
+
+  .link {
+    margin-left: 0;
+  }
+
+  .media {
+    justify-self: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+}
