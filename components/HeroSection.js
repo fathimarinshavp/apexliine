@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './HeroSection.module.css';
 import { AnimatedGradientText, ParallaxText, ScrollRevealText } from './animations';
@@ -6,19 +9,40 @@ const SHAPE_PATH =
   'M146 0 H564 A16 16 0 0 1 580 16 V524 A16 16 0 0 1 564 540 H316 A16 16 0 0 0 300 556 V624 A16 16 0 0 1 284 640 H16 A16 16 0 0 1 0 624 V116 A16 16 0 0 1 16 100 H114 A16 16 0 0 0 130 84 V16 A16 16 0 0 1 146 0 Z';
 
 export default function HeroSection() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Ensure audio is strictly muted on the DOM element for mobile autoplay
+    video.defaultMuted = true;
+    video.muted = true;
+
+    // Trigger instant play and catch any browser power-saving restrictions
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay blocked by battery saver / browser policy; fallback smoothly
+      });
+    }
+  }, []);
+
   return (
     <section id="home" aria-labelledby="hero-title" className={styles.hero}>
       <div className={styles.bgVideoWrap} aria-hidden="true">
         <video
+          ref={videoRef}
           className={styles.bgVideo}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
-          poster="/images/service-digital-printer.jpg"
+          preload="auto"
+          poster="/images/hero-video-poster.jpg"
         >
-          <source src="https://www.pexels.com/download/video/29906415/" type="video/mp4" />
+          <source src="/videos/hero-720p.mp4" media="(max-width: 768px)" type="video/mp4" />
+          <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
         <div className={styles.bgOverlay} />
       </div>

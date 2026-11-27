@@ -27,15 +27,15 @@ export default function ProductsPage() {
                   Everything you need, printed.
                 </ScrollRevealText>
               </ZoomText>
-              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">
                 Explore our product categories, from everyday business essentials to packaging, apparel, and signage.
               </ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
-              <div className={styles.imageFrame}>
+              <div className={`${styles.imageFrame} ${styles.imageFrameOverlay}`}>
                 <Image
-                  src="/images/project-packaging.jpg"
-                  alt="Custom packaging products arranged in natural light"
+                  src="/images/project-editorial-booklet.jpg"
+                  alt="Editorial booklets arranged in a refined studio setting"
                   fill
                   priority
                   sizes="(max-width: 900px) 100vw, 50vw"

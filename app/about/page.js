@@ -47,7 +47,7 @@ export default function AboutPage() {
               </Link>
               <p className={styles.eyebrow}>About us</p>
               <ZoomText as="h1" id="about-page-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>Built for brands that value print.</ScrollRevealText></ZoomText>
-              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">We are an independent printing house turning ideas into things you can hold, with care from first proof to final finish.</ScrollColorText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">We are an independent printing house turning ideas into things you can hold, with care from first proof to final finish.</ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
               <div className={styles.imageFrame}>
@@ -98,7 +98,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className={styles.cta} aria-labelledby="about-cta" style={{ '--sd-accent': '#F3EFE6' }}>
+        <section className={styles.cta} aria-labelledby="about-cta" style={{ '--sd-accent': '#1B1A24' }}>
           <div className={styles.ctaContainer}>
             <Reveal>
               <p className={styles.eyebrow}>Work with us</p>

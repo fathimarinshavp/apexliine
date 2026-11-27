@@ -102,28 +102,18 @@ export default function SiteHeader() {
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
               >
-                <Link
-                  href={link.href}
+                <button
+                  type="button"
                   className="site-nav__dropdown-trigger"
                   aria-expanded={servicesOpen}
                   aria-haspopup="true"
-                  onClick={(e) => {
-                    if (e.detail === 0 || !servicesOpen) {
-                      // keyboard or first click: open dropdown, prevent immediate navigation
-                      if (!servicesOpen) {
-                        e.preventDefault();
-                        setServicesOpen(true);
-                      }
-                    } else {
-                      setServicesOpen(false);
-                    }
-                  }}
+                  onClick={() => setServicesOpen((v) => !v)}
                 >
                   <span>{link.label}</span>
                   <svg className="site-nav__caret" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </Link>
+                </button>
                 <div className="site-nav__dropdown-menu" role="menu" aria-label="Services">
                   <div className="site-nav__dropdown-panel">
                     {services.map((service) => (
@@ -176,16 +166,15 @@ export default function SiteHeader() {
             return (
               <div key={link.label} className={`site-nav__mobile-group${mobileServicesOpen ? ' is-open' : ''}`}>
                 <div className="site-nav__mobile-trigger-row">
-                  <Link href="/services" className="site-nav__mobile-trigger-link" onClick={closeAll}>
-                    {link.label}
-                  </Link>
                   <button
                     type="button"
-                    className="site-nav__mobile-trigger-toggle"
+                    className="site-nav__mobile-trigger-link site-nav__mobile-trigger-toggle-all"
                     aria-expanded={mobileServicesOpen}
+                    aria-controls="mobile-services-subnav"
                     aria-label={mobileServicesOpen ? 'Collapse services' : 'Expand services'}
                     onClick={() => setMobileServicesOpen((v) => !v)}
                   >
+                    <span>{link.label}</span>
                     <svg className="site-nav__caret" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                       <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>

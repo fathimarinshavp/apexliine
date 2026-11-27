@@ -1,8 +1,8 @@
 .hero {
-  --hero-bg: #F8F8F8;
-  --hero-ink: #111111;
-  --hero-body: #222222;
-  --hero-muted: #5E5E5E;
+  --hero-bg: #141414;
+  --hero-ink: #F3F3F3;
+  --hero-body: #D0D0D0;
+  --hero-muted: #A0A0A0;
 
   position: relative;
   box-sizing: border-box;
@@ -22,9 +22,15 @@
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  background-image: url('/images/hero-video-poster.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .bgVideo {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -33,22 +39,13 @@
 .bgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(248,248,248,0.72) 0%, rgba(248,248,248,0.82) 45%, rgba(248,248,248,0.92) 100%);
+  background: linear-gradient(180deg, rgba(20,20,20,0.62) 0%, rgba(20,20,20,0.74) 45%, rgba(20,20,20,0.86) 100%);
 }
 
 .hero *,
 .hero *::before,
 .hero *::after {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  .hero {
-    --hero-bg: #141414;
-    --hero-ink: #F3F3F3;
-    --hero-body: #D0D0D0;
-    --hero-muted: #A0A0A0;
-  }
 }
 
 .svgDefs {
@@ -175,14 +172,8 @@
   }
 }
 
-@media (max-width: 900px) and (prefers-color-scheme: dark) {
-  .bgOverlay {
-    background: linear-gradient(180deg, rgba(20,20,20,0.62) 0%, rgba(20,20,20,0.74) 45%, rgba(20,20,20,0.86) 100%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .bgVideoWrap { display: none !important; }
+  .bgVideo { display: none !important; }
 }
 
 @media (max-width: 560px) {

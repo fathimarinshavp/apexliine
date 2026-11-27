@@ -44,7 +44,7 @@ export default async function ProductPage({ params }) {
               </Link>
               <p className={styles.eyebrow}>Product category {group.number}</p>
               <ZoomText as="h1" id="product-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>{group.title}</ScrollRevealText></ZoomText>
-              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">{group.description}</ScrollColorText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">{group.description}</ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
               <div className={styles.imageFrame}>
@@ -81,6 +81,18 @@ export default async function ProductPage({ params }) {
                 </div>
               </Reveal>
             </div>
+
+            <Reveal className={styles.pdOverviewMedia} delay={100}>
+              <div className={`${styles.pdOverviewMediaFrame} ${styles.imageFrameOverlay}`}>
+                <Image
+                  src="/images/hero-editorial-pages.jpg"
+                  alt={`${group.title} print detail`}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 90vw"
+                  className={styles.image}
+                />
+              </div>
+            </Reveal>
 
             <div className={styles.pdIndex}>
               <Reveal className={styles.pdIndexHead}>
