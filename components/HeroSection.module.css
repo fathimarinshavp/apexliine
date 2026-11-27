@@ -4,6 +4,7 @@
   --hero-body: #222222;
   --hero-muted: #5E5E5E;
 
+  position: relative;
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
@@ -12,6 +13,27 @@
   background: var(--hero-bg);
   color: var(--hero-body);
   font-family: var(--font-hanken-grotesk), 'Hanken Grotesk', sans-serif;
+}
+
+.bgVideoWrap {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bgVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(248,248,248,0.72) 0%, rgba(248,248,248,0.82) 45%, rgba(248,248,248,0.92) 100%);
 }
 
 .hero *,
@@ -37,6 +59,8 @@
 }
 
 .layout {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 58% 30%;
   justify-content: space-between;
@@ -147,10 +171,18 @@
   }
 
   .media {
-    justify-self: stretch;
-    width: min(100%, 520px);
-    max-width: 100%;
+    display: none;
   }
+}
+
+@media (max-width: 900px) and (prefers-color-scheme: dark) {
+  .bgOverlay {
+    background: linear-gradient(180deg, rgba(20,20,20,0.62) 0%, rgba(20,20,20,0.74) 45%, rgba(20,20,20,0.86) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgVideoWrap { display: none !important; }
 }
 
 @media (max-width: 560px) {

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Reveal from '../../../components/Reveal';
-import { ScrollRevealText, ZoomText, ScrollColorText } from '../../../components/animations';
+import { ScrollRevealText, ZoomText, ScrollColorText, ParallaxText, AnimatedGradientText } from '../../../components/animations';
 import SiteHeader from '../../../components/SiteHeader';
 import SiteFooter from '../../../components/SiteFooter';
 import { getProductGroupById, productGroups } from '../../data/products';
@@ -54,51 +54,96 @@ export default async function ProductPage({ params }) {
           </div>
         </section>
 
-        <section className={styles.details} aria-label="Product details">
-          <div className={styles.detailsContainer} style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
-            <Reveal className={styles.detailBlock} style={{ gridColumn: 'span 2' }}>
-              <p className={styles.label}>What we produce</p>
-              <ul className={styles.list} style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}>
-                {group.items.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </Reveal>
-            <Reveal className={styles.detailBlock} delay={120}>
-              <p className={styles.label}>Next category</p>
-              <Link href={`/products/${nextGroup.id}`} className={styles.nextLink}>
-                <span>{nextGroup.title}</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h13" /><path d="m13 6 6 6-6 6" /></svg>
-              </Link>
-            </Reveal>
+        <section className={styles.pdOverview} aria-label="Category overview">
+          <div className={styles.pdOverviewInner}>
+            <div className={styles.pdOverviewTop}>
+              <Reveal className={styles.pdOverviewHead}>
+                <p className={styles.eyebrow}>Category {group.number}</p>
+                <ZoomText as="h2" className={styles.pdOverviewTitle}>
+                  <ScrollRevealText as="span" by="words" stagger={0.04} y={28}>
+                    Made to leave an impression.
+                  </ScrollRevealText>
+                </ZoomText>
+              </Reveal>
+              <Reveal className={styles.pdOverviewCopy} delay={80}>
+                <ScrollColorText as="p" className={styles.pdOverviewLead} fromColor="rgba(94,94,94,0.45)" toColor="#111111">
+                  {group.description} We produce this category with attention to material choice, color accuracy, and finishing so the final result feels professional and ready to use.
+                </ScrollColorText>
+                <div className={styles.pdOverviewMeta}>
+                  <div className={styles.pdMetaItem}>
+                    <span className={styles.pdMetaValue}>{String(group.items.length).padStart(2, '0')}</span>
+                    <span className={styles.pdMetaLabel}>Products</span>
+                  </div>
+                  <div className={styles.pdMetaItem}>
+                    <span className={styles.pdMetaValue}>Custom</span>
+                    <span className={styles.pdMetaLabel}>Sizes & finishes</span>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className={styles.pdIndex}>
+              <Reveal className={styles.pdIndexHead}>
+                <p className={styles.pdIndexLabel}>What we produce</p>
+                <div className={styles.pdIndexLine} aria-hidden="true" />
+              </Reveal>
+              <div className={styles.pdIndexList}>
+                {group.items.map((item, index) => (
+                  <Reveal key={item} className={styles.pdIndexItem} delay={Math.min(index * 40, 240)}>
+                    <span className={styles.pdIndexNum}>{String(index + 1).padStart(2, '0')}</span>
+                    <p className={styles.pdIndexName}>{item}</p>
+                    <span className={styles.pdIndexDot} aria-hidden="true" />
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className={styles.contentSection} aria-labelledby="product-overview">
-          <div className={styles.contentContainer}>
-            <Reveal>
-              <p className={styles.eyebrow}>Overview</p>
-              <h2 id="product-overview" className={styles.sectionTitle}>Print made to fit your need.</h2>
-            </Reveal>
-            <Reveal delay={80}>
-              <p className={styles.sectionText}>{group.description} We produce this category with attention to material choice, color accuracy, and finishing so the final result feels professional and ready to use.</p>
-              <p className={styles.sectionText}>Whether you need a small run or a larger batch, we can guide you on paper, sizing, finish, and turnaround to match your purpose and budget.</p>
-            </Reveal>
-          </div>
-        </section>
-
-        <section className={styles.contentSection} aria-labelledby="product-process" style={{ paddingTop: 0 }}>
-          <div className={styles.contentContainer}>
-            <Reveal>
+        <section className={styles.pdProcess} aria-labelledby="product-process">
+          <div className={styles.pdProcessInner}>
+            <Reveal className={styles.pdProcessHead}>
               <p className={styles.eyebrow}>How to order</p>
-              <h2 id="product-process" className={styles.sectionTitle}>A clear path from brief to print.</h2>
+              <h2 id="product-process" className={styles.pdProcessTitle}>
+                <ScrollRevealText as="span" by="words" stagger={0.04} y={24}>
+                  Simple steps, solid results.
+                </ScrollRevealText>
+              </h2>
             </Reveal>
-            <div className={styles.stepList}>
-              {[{ title: 'Share your requirement', text: 'Send us the quantity, size, and purpose. If you have artwork, we can review it before print.' }, { title: 'Choose material & finish', text: 'We recommend the right stock, coating, and finishing options for durability and look.' }, { title: 'Print & deliver', text: 'After approval, we produce, quality-check, and deliver your order on schedule.' }].map((step, index) => (
-                <Reveal key={step.title} as="div" className={styles.stepItem} delay={index * 60}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepText}>{step.text}</p>
+            <div className={styles.pdSteps}>
+              {[
+                { num: '01', title: 'Share your requirement', text: 'Send us the quantity, size, and purpose. If you have artwork, we can review it before print.' },
+                { num: '02', title: 'Choose material & finish', text: 'We recommend the right stock, coating, and finishing options for durability and look.' },
+                { num: '03', title: 'Print & deliver', text: 'After approval, we produce, quality-check, and deliver your order on schedule.' },
+              ].map((step, index) => (
+                <Reveal key={step.title} className={styles.pdStep} delay={index * 70}>
+                  <span className={styles.pdStepNum}>{step.num}</span>
+                  <div className={styles.pdStepBody}>
+                    <h3 className={styles.pdStepTitle}>{step.title}</h3>
+                    <p className={styles.pdStepText}>{step.text}</p>
+                  </div>
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className={styles.pdNext} aria-label="Next category">
+          <div className={styles.pdNextInner}>
+            <Reveal className={styles.pdNextReveal}>
+              <div className={styles.pdNextMeta}>
+                <p className={styles.eyebrow}>Next category</p>
+                <p className={styles.pdNextDesc}>Continue exploring our product range.</p>
+              </div>
+              <Link href={`/products/${nextGroup.id}`} className={styles.pdNextLink}>
+                <span className={styles.pdNextTitle}>{nextGroup.title}</span>
+                <span className={styles.pdNextArrow} aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h13" /><path d="m13 6 6 6-6 6" />
+                  </svg>
+                </span>
+              </Link>
+            </Reveal>
           </div>
         </section>
 

@@ -6,3 +6,6 @@ build/
 .env
 .env.local
 .env.production
+.agents
+# Large local media
+public/videos/

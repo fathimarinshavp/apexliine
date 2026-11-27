@@ -2346,3 +2346,37 @@ ul {
   .pinned-type-title { color: #F3F3F3; }
   .pinned-type-sub { color: #A0A0A0; }
 }
+
+/* Services nav dropdown */
+.site-nav__dropdown { position: relative; display: inline-flex; align-items: center; }
+.site-nav__dropdown-trigger { display: inline-flex; align-items: center; gap: 6px; padding: 6px 0; border: 0; background: transparent; color: var(--hero-ink); font: inherit; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.01em; cursor: pointer; text-decoration: none; }
+.site-nav__dropdown-trigger::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: var(--hero-ink); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+.site-nav__dropdown:hover .site-nav__dropdown-trigger::after, .site-nav__dropdown:focus-within .site-nav__dropdown-trigger::after, .site-nav__dropdown.is-open .site-nav__dropdown-trigger::after { transform: scaleX(1); }
+.site-nav__caret { width: 12px; height: 12px; transition: transform 0.25s ease; flex-shrink: 0; }
+.site-nav__dropdown.is-open .site-nav__caret, .site-nav__mobile-group.is-open .site-nav__caret { transform: rotate(180deg); }
+.site-nav__dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); width: min(320px, calc(100vw - 32px)); padding-top: 14px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease; z-index: 120; }
+.site-nav__dropdown.is-open .site-nav__dropdown-menu, .site-nav__dropdown:focus-within .site-nav__dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.site-nav__dropdown-panel { padding: 10px; background: #fff; border: 1px solid rgba(41, 41, 41, 0.1); box-shadow: 0 20px 50px rgba(17,17,17,0.08); }
+.site-nav .site-nav__dropdown-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; color: var(--hero-ink); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0; line-height: 1.4; text-decoration: none; white-space: nowrap; transition: background 0.2s ease, color 0.2s ease; }
+.site-nav .site-nav__dropdown-item::after { display: none !important; }
+.site-nav .site-nav__dropdown-item:hover, .site-nav .site-nav__dropdown-item:focus-visible { background: #F8F8F8; color: #111; }
+.site-nav__dropdown-num { flex: 0 0 auto; min-width: 22px; color: #5E5E5E; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; transition: color 0.2s ease; }
+.site-nav__dropdown-title { min-width: 0; flex: 1 1 auto; }
+.site-nav__dropdown-icon { width: 14px; height: 14px; flex: 0 0 auto; color: #8A8A8A; opacity: 0; transform: translate(-4px, 4px); transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease; }
+.site-nav .site-nav__dropdown-item:hover .site-nav__dropdown-icon,
+.site-nav .site-nav__dropdown-item:focus-visible .site-nav__dropdown-icon { opacity: 1; transform: translate(0, 0); color: #111; }
+.site-nav .site-nav__dropdown-item:hover .site-nav__dropdown-num,
+.site-nav .site-nav__dropdown-item:focus-visible .site-nav__dropdown-num { color: #111; }
+
+/* Mobile services subnav */
+.site-nav__mobile-group { display: flex; flex-direction: column; }
+.site-nav__mobile-trigger-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.site-nav__mobile-trigger-link { flex: 1 1 auto; padding: 12px 0; color: var(--hero-ink); font-size: 1rem; font-weight: 500; text-decoration: none; }
+.site-nav__mobile-trigger-toggle { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 0; background: transparent; color: var(--hero-ink); cursor: pointer; padding: 0; }
+.site-nav__mobile-sub { display: flex; flex-direction: column; padding: 2px 0 12px 12px; margin-bottom: 4px; border-left: 1px solid rgba(41,41,41,0.12); }
+.site-nav__mobile-sublink { display: flex; align-items: center; gap: 10px; padding: 9px 0; font-size: 0.92rem; color: #333; text-decoration: none; }
+.site-nav__mobile-sublink:hover, .site-nav__mobile-sublink:focus-visible { color: #111; }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__dropdown-trigger::after, .site-nav__caret, .site-nav__dropdown-menu, .site-nav__dropdown-item { transition: none; }
+}

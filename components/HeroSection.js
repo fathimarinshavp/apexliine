@@ -8,6 +8,21 @@ const SHAPE_PATH =
 export default function HeroSection() {
   return (
     <section id="home" aria-labelledby="hero-title" className={styles.hero}>
+      <div className={styles.bgVideoWrap} aria-hidden="true">
+        <video
+          className={styles.bgVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/service-digital-printer.jpg"
+        >
+          <source src="https://www.pexels.com/download/video/29906415/" type="video/mp4" />
+        </video>
+        <div className={styles.bgOverlay} />
+      </div>
+
       <svg className={styles.svgDefs} aria-hidden="true" focusable="false">
         <defs>
           <clipPath id="heroShape" clipPathUnits="objectBoundingBox">
@@ -49,18 +64,7 @@ export default function HeroSection() {
           </a>
         </div>
 
-        <div className={styles.media}>
-          <div className={styles.imageFrame}>
-            <Image
-              src="/images/service-digital-printer.jpg"
-              alt="Digital printing press producing sharp color prints"
-              fill
-              sizes="(max-width: 900px) 100vw, 30vw"
-              priority
-              className={styles.image}
-            />
-          </div>
-        </div>
+
       </div>
     </section>
   );
