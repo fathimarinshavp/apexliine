@@ -8,4 +8,5 @@ build/
 .env.production
 .agents
 # Large local media
-public/videos/
+public/videos/*
+!public/videos/hero.mp4

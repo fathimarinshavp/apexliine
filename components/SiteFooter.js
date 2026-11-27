@@ -24,7 +24,6 @@ export default function SiteFooter() {
           <nav className="footer-column" aria-label="Footer navigation">
             <h3>Navigate</h3>
             <Link href="/">Home</Link>
-            <Link href="/services">Services</Link>
             <Link href="/products">Products</Link>
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
@@ -42,7 +41,7 @@ export default function SiteFooter() {
           <div className="footer-column">
             <h3>Apexline</h3>
             <Link href="/contact">Request a Quote</Link>
-            <Link href="/services">Selected Work</Link>
+            <Link href="/products">Selected Work</Link>
             <Link href="/about">Our Approach</Link>
           </div>
         </div>

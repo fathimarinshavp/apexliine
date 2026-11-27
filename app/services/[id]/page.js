@@ -77,8 +77,8 @@ export default async function ServicePage({ params }) {
                   From concept to final production, we manage every stage of the {service.title.toLowerCase()} process
                   with precision, professional expertise and exceptional quality.
                 </ScrollRevealText>
-                <Link href="/services" className={styles.panelButton}>
-                  View our printing services
+                <Link href="/contact" className={styles.panelButton}>
+                  Request a quote
                 </Link>
               </Reveal>
 

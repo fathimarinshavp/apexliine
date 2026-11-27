@@ -38,7 +38,7 @@ export default function Home() {
                   Have a project in mind?
                 </ScrollRevealText>
               </ZoomText>
-              <ScrollColorText as="p" fromColor="rgba(94,94,94,0.55)" toColor="#111111">
+              <ScrollColorText as="p" fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">
                 Let&apos;s create something worth holding, seeing, and remembering.
               </ScrollColorText>
               <div className="contact__rule" aria-hidden="true" />

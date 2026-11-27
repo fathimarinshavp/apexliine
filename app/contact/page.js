@@ -21,7 +21,7 @@ export default function ContactPage() {
             <Reveal className={styles.intro}>
               <p className={styles.eyebrow}>Contact</p>
               <ZoomText as="h1" id="contact-page-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>Let&apos;s print something great.</ScrollRevealText></ZoomText>
-              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(94,94,94,0.5)" toColor="#111111">Tell us about your project and we&apos;ll help with materials, finishes, timelines, and the right print approach.</ScrollColorText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">Tell us about your project and we&apos;ll help with materials, finishes, timelines, and the right print approach.</ScrollColorText>
               <div className={styles.details}>
                 <div>
                   <p className={styles.label}>Email</p>

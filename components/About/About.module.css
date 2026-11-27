@@ -1,8 +1,8 @@
 .about {
-  --about-bg: #F8F8F8;
-  --about-ink: #111111;
-  --about-body: #222222;
-  --about-muted: #5E5E5E;
+  --about-bg: #141414;
+  --about-ink: #F3F3F3;
+  --about-body: #D0D0D0;
+  --about-muted: #A0A0A0;
 
   box-sizing: border-box;
   width: 100%;
@@ -18,15 +18,6 @@
 .about *::before,
 .about *::after {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  .about {
-    --about-bg: #141414;
-    --about-ink: #F3F3F3;
-    --about-body: #D0D0D0;
-    --about-muted: #A0A0A0;
-  }
 }
 
 .svgDefs {
@@ -112,6 +103,15 @@
   overflow: hidden;
   -webkit-clip-path: url(#aboutShape);
   clip-path: url(#aboutShape);
+}
+
+.imageFrame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.06) 0%, rgba(20, 20, 20, 0.1) 45%, rgba(20, 20, 20, 0.6) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .image {

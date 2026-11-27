@@ -1,9 +1,9 @@
 .finishing {
-  --section-bg: #F8F8F8;
-  --ink: #111111;
-  --muted: #5E5E5E;
-  --border: #DDDDDD;
-  --hover-bg: #FFFFFF;
+  --section-bg: #141414;
+  --ink: #F3F3F3;
+  --muted: #A0A0A0;
+  --border: #2A2A2A;
+  --hover-bg: #1C1C1C;
 
   box-sizing: border-box;
   width: 100%;
@@ -16,16 +16,6 @@
 }
 
 .finishing *, .finishing *::before, .finishing *::after { box-sizing: border-box; }
-
-@media (prefers-color-scheme: dark) {
-  .finishing {
-    --section-bg: #141414;
-    --ink: #F3F3F3;
-    --muted: #A0A0A0;
-    --border: #2A2A2A;
-    --hover-bg: #1C1C1C;
-  }
-}
 
 .container { width: 100%; max-width: 1440px; margin: 0 auto; }
 
