@@ -55,7 +55,7 @@ export default function WorkShowcase({ services = [] }) {
         transformOrigin: '50% 0%',
         force3D: true,
       });
-      gsap.set(images, { scale: 1.12, force3D: true });
+      gsap.set(images, { scale: 1.06, force3D: true });
       gsap.set(normalLetters, { y: '0%' });
       gsap.set(swapLetters, { y: '100%' });
 
@@ -214,6 +214,7 @@ export default function WorkShowcase({ services = [] }) {
                   fill
                   data-ws-image
                   sizes="(min-width: 1001px) 759px, 95vw"
+                  quality={90}
                 />
               </div>
 

@@ -48,6 +48,9 @@ export default async function ServicePage({ params }) {
                 From creative concepts to premium print solutions, we transform your ideas into beautifully crafted
                 printed experiences with precision, quality and attention to detail.
               </ScrollRevealText>
+              <ScrollRevealText as="p" className={styles.introText} by="words" stagger={0.012} y={16} delay={0.14}>
+                {`${service.subheadline} ${service.overview?.[0] || service.description}`}
+              </ScrollRevealText>
             </Reveal>
           </div>
         </section>

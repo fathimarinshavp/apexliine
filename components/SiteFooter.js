@@ -11,11 +11,12 @@ export default function SiteFooter() {
         <div className="site-footer__grid">
           <div className="footer-brand">
             <Image
-              src="/apexlogo.png"
+              src="/apex-line-logo-dark-ash.svg"
               alt="Apexline Graphics LLC"
-              width={180}
-              height={60}
-              sizes="180px"
+              width={2062}
+              height={234}
+              sizes="260px"
+              unoptimized
               className="footer-logo"
             />
             <p>Print, packaging and finishing for brands that value the tangible.</p>

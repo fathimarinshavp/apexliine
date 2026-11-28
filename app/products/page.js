@@ -4,12 +4,12 @@ import Reveal from '../../components/Reveal';
 import { ScrollRevealText, ZoomText, ScrollColorText } from '../../components/animations';
 import SiteHeader from '../../components/SiteHeader';
 import SiteFooter from '../../components/SiteFooter';
-import { productGroups } from '../data/products';
+import { products } from '../data/products';
 import styles from '../services/[id]/page.module.css';
 
 export const metadata = {
   title: 'Products | Apexline Graphics LLC',
-  description: 'Browse Apexline Graphics LLC product categories for print, packaging, apparel, and signage.',
+  description: 'Browse Apexline Graphics LLC products for cards, brochures, boxes, bags, stationery, books, and more.',
 };
 
 export default function ProductsPage() {
@@ -28,7 +28,7 @@ export default function ProductsPage() {
                 </ScrollRevealText>
               </ZoomText>
               <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">
-                Explore our product categories, from everyday business essentials to packaging, apparel, and signage.
+                Explore our products, from business cards and brochures to rigid boxes and hard case books.
               </ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
@@ -50,7 +50,7 @@ export default function ProductsPage() {
           <div className={styles.catalogContainer}>
             <Reveal className={styles.catalogHead}>
               <div>
-                <p className={styles.eyebrow}>Product categories</p>
+                <p className={styles.eyebrow}>Product catalogue</p>
                 <h2 id="catalog-title" className={styles.catalogTitle}>
                   <ScrollRevealText as="span" by="words" stagger={0.04} y={24}>
                     Print for every purpose.
@@ -58,30 +58,31 @@ export default function ProductsPage() {
                 </h2>
               </div>
               <p className={styles.catalogHeadText}>
-                Eight categories, thoughtfully produced from brief to final finish.
+                Ten products, thoughtfully produced from brief to final finish.
               </p>
             </Reveal>
 
             <div className={styles.catalogList}>
-              {productGroups.map((group, index) => (
-                <Reveal key={group.id} delay={Math.min(index * 50, 200)}>
-                  <Link href={`/products/${group.id}`} className={styles.catalogRow}>
-                    <span className={styles.catalogIndex}>{group.number}</span>
+              {products.map((product, index) => (
+                <Reveal key={product.id} delay={Math.min(index * 50, 200)}>
+                  <Link href={`/products/${product.id}`} className={styles.catalogRow}>
+                    <span className={styles.catalogIndex}>{product.number}</span>
                     <div className={styles.catalogMedia}>
                       <Image
-                        src={group.image}
-                        alt={group.alt}
+                        src={product.image}
+                        alt={product.alt}
                         fill
                         sizes="(max-width: 720px) 100vw, 240px"
+                        quality={90}
                         className={styles.catalogImage}
                       />
                     </div>
                     <div className={styles.catalogMain}>
-                      <h3 className={styles.catalogName}>{group.title}</h3>
-                      <p className={styles.catalogDesc}>{group.description}</p>
+                      <h3 className={styles.catalogName}>{product.title}</h3>
+                      <p className={styles.catalogDesc}>{product.description}</p>
                     </div>
                     <div className={styles.catalogMeta}>
-                      <span className={styles.catalogCount}>{group.items.length} products</span>
+                      <span className={styles.catalogCount}>View product</span>
                       <span className={styles.catalogArrow} aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M5 12h13" /><path d="m13 6 6 6-6 6" />
