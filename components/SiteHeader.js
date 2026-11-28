@@ -81,7 +81,7 @@ export default function SiteHeader() {
             height={234}
             priority
             unoptimized
-            sizes="(max-width: 900px) 380px, 620px"
+            sizes="(max-width: 900px) 460px, 620px"
           />
         </Link>
 

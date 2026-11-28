@@ -1835,21 +1835,21 @@ ul {
 
 @media (max-width: 900px) {
   .shell {
-    width: min(100% - 40px, 1320px);
+    width: min(100% - 24px, 1320px);
   }
 
   html {
-    scroll-padding-top: 80px;
+    scroll-padding-top: 88px;
   }
 
   .site-header__inner {
-    height: 68px;
-    gap: 12px;
+    height: 80px;
+    gap: 8px;
   }
 
   .site-header__brand img {
-    width: min(380px, calc(100vw - 104px));
-    max-height: 54px;
+    width: min(460px, calc(100vw - 78px));
+    max-height: 60px;
   }
 
   .site-nav--desktop {
@@ -1900,6 +1900,10 @@ ul {
 @media (max-width: 640px) {
   .shell {
     width: min(100% - 32px, 1320px);
+  }
+
+  .site-header__brand img {
+    width: min(460px, calc(100vw - 86px));
   }
 
   .about-studio__media {
