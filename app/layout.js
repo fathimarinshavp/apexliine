@@ -12,14 +12,12 @@ const manrope = Manrope({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-manrope',
-  weight: ['400', '500', '600', '700'],
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-plus-jakarta-sans',
-  weight: ['400', '600'],
 });
 
 const interTight = Inter_Tight({
@@ -45,13 +43,12 @@ const hankenGrotesk = Hanken_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-hanken-grotesk',
-  weight: ['300', '400', '500', '600'],
 });
 
 export const metadata = {
-  title: 'Apexline Graphics LLC | Print, Design & Finishing',
+  title: 'Apexline Graphics LLC | Printing, Packaging & Binding',
   description:
-    'Apexline Graphics LLC creates considered print, packaging and finishing — from digital and offset printing to binding and large-format graphics.',
+    'Apexline Graphics LLC creates considered print, packaging and finishing — from digital and commercial printing to rigid boxes and binding.',
 };
 
 export const viewport = {

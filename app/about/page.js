@@ -5,10 +5,11 @@ import { ScrollRevealText, ZoomText, ScrollColorText } from '../../components/an
 import SiteHeader from '../../components/SiteHeader';
 import SiteFooter from '../../components/SiteFooter';
 import styles from '../services/[id]/page.module.css';
+import { whoWeAre } from '../data/about';
 
 export const metadata = {
   title: 'About Us | Apexline Graphics LLC',
-  description: 'Learn about Apexline Graphics LLC, our approach, and our printing craft.',
+  description: 'Learn about Apexline Graphics LLC, our journey since 2003, and our printing craft in Sharjah, UAE.',
 };
 
 const values = [
@@ -47,7 +48,7 @@ export default function AboutPage() {
               </Link>
               <p className={styles.eyebrow}>About us</p>
               <ZoomText as="h1" id="about-page-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>Built for brands that value print.</ScrollRevealText></ZoomText>
-              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">We are an independent printing house turning ideas into things you can hold, with care from first proof to final finish.</ScrollColorText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">Since 2003, we have built a strong presence in the UAE’s printing and design industry, bringing the latest printing technology and care to every client’s needs.</ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
               <div className={styles.imageFrame}>
@@ -71,12 +72,13 @@ export default function AboutPage() {
         <section className={styles.contentSection} aria-labelledby="about-story">
           <div className={styles.contentContainer}>
             <Reveal>
-              <p className={styles.eyebrow}>Our story</p>
+              <p className={styles.eyebrow}>Who we are</p>
               <h2 id="about-story" className={styles.sectionTitle}>A print house with a careful eye.</h2>
             </Reveal>
             <Reveal delay={80}>
-              <p className={styles.sectionText}>Apexline Graphics LLC was built to make professional printing feel simple. We combine digital, offset, UV, large format, and finishing capabilities so brands can move from idea to finished piece with one trusted team.</p>
-              <p className={styles.sectionText}>Whether it's a business card, a bound catalogue, or custom packaging, we focus on the details that make print feel sharp, useful, and memorable.</p>
+              {whoWeAre.map((paragraph) => (
+                <p key={paragraph} className={styles.sectionText}>{paragraph}</p>
+              ))}
             </Reveal>
           </div>
         </section>
@@ -90,8 +92,11 @@ export default function AboutPage() {
             <div className={styles.stepList}>
               {process.map((step, index) => (
                 <Reveal key={step.title} as="div" className={styles.stepItem} delay={index * 60}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepText}>{step.text}</p>
+                  <span className={styles.stepNum}>{String(index + 1).padStart(2, '0')}</span>
+                  <div className={styles.stepContent}>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepText}>{step.text}</p>
+                  </div>
                 </Reveal>
               ))}
             </div>

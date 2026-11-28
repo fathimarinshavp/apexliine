@@ -5,30 +5,30 @@ import Reveal from '../../../components/Reveal';
 import { ScrollRevealText, ZoomText, ScrollColorText, ParallaxText, AnimatedGradientText } from '../../../components/animations';
 import SiteHeader from '../../../components/SiteHeader';
 import SiteFooter from '../../../components/SiteFooter';
-import { getProductGroupById, productGroups } from '../../data/products';
+import { getProductById, products } from '../../data/products';
 import styles from '../../services/[id]/page.module.css';
 
 export function generateStaticParams() {
-  return productGroups.map((group) => ({ id: group.id }));
+  return products.map((product) => ({ id: product.id }));
 }
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const group = getProductGroupById(id);
-  if (!group) return { title: 'Products | Apexline Graphics LLC' };
+  const product = getProductById(id);
+  if (!product) return { title: 'Products | Apexline Graphics LLC' };
   return {
-    title: `${group.title} | Apexline Graphics LLC`,
-    description: group.description,
+    title: `${product.title} | Apexline Graphics LLC`,
+    description: product.description,
   };
 }
 
 export default async function ProductPage({ params }) {
   const { id } = await params;
-  const group = getProductGroupById(id);
-  if (!group) notFound();
+  const product = getProductById(id);
+  if (!product) notFound();
 
-  const currentIndex = productGroups.findIndex((item) => item.id === group.id);
-  const nextGroup = productGroups[(currentIndex + 1) % productGroups.length];
+  const currentIndex = products.findIndex((item) => item.id === product.id);
+  const nextProduct = products[(currentIndex + 1) % products.length];
 
   return (
     <>
@@ -42,23 +42,23 @@ export default async function ProductPage({ params }) {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H6" /><path d="m12 19-7-7 7-7" /></svg>
                 <span>Back to products</span>
               </Link>
-              <p className={styles.eyebrow}>Product category {group.number}</p>
-              <ZoomText as="h1" id="product-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>{group.title}</ScrollRevealText></ZoomText>
-              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">{group.description}</ScrollColorText>
+              <p className={styles.eyebrow}>Product {product.number}</p>
+              <ZoomText as="h1" id="product-title" className={styles.title}><ScrollRevealText as="span" by="words" stagger={0.04} y={30}>{product.title}</ScrollRevealText></ZoomText>
+              <ScrollColorText as="p" className={styles.lead} fromColor="rgba(160,160,160,0.55)" toColor="#F3F3F3">{product.description}</ScrollColorText>
             </Reveal>
             <Reveal className={styles.heroMedia} delay={100}>
-              <div className={styles.imageFrame}>
-                <Image src={group.image} alt={group.alt} fill priority sizes="(max-width: 900px) 100vw, 50vw" className={styles.image} />
+              <div className={styles.imageFrameSquare}>
+                <Image src={product.image} alt={product.alt} fill priority sizes="(max-width: 900px) 100vw, 50vw" quality={90} className={styles.image} />
               </div>
             </Reveal>
           </div>
         </section>
 
-        <section className={styles.pdOverview} aria-label="Category overview">
+        <section className={styles.pdOverview} aria-label="Product overview">
           <div className={styles.pdOverviewInner}>
             <div className={styles.pdOverviewTop}>
               <Reveal className={styles.pdOverviewHead}>
-                <p className={styles.eyebrow}>Category {group.number}</p>
+                <p className={styles.eyebrow}>Product {product.number}</p>
                 <ZoomText as="h2" className={styles.pdOverviewTitle}>
                   <ScrollRevealText as="span" by="words" stagger={0.04} y={28}>
                     Made to leave an impression.
@@ -67,12 +67,12 @@ export default async function ProductPage({ params }) {
               </Reveal>
               <Reveal className={styles.pdOverviewCopy} delay={80}>
                 <ScrollColorText as="p" className={styles.pdOverviewLead} fromColor="rgba(94,94,94,0.45)" toColor="#111111">
-                  {group.description} We produce this category with attention to material choice, color accuracy, and finishing so the final result feels professional and ready to use.
+                  {product.description} We produce this product with attention to material choice, color accuracy, and finishing so the final result feels professional and ready to use.
                 </ScrollColorText>
                 <div className={styles.pdOverviewMeta}>
                   <div className={styles.pdMetaItem}>
-                    <span className={styles.pdMetaValue}>{String(group.items.length).padStart(2, '0')}</span>
-                    <span className={styles.pdMetaLabel}>Products</span>
+                    <span className={styles.pdMetaValue}>{String(product.details.length).padStart(2, '0')}</span>
+                    <span className={styles.pdMetaLabel}>Details</span>
                   </div>
                   <div className={styles.pdMetaItem}>
                     <span className={styles.pdMetaValue}>Custom</span>
@@ -85,8 +85,8 @@ export default async function ProductPage({ params }) {
             <Reveal className={styles.pdOverviewMedia} delay={100}>
               <div className={`${styles.pdOverviewMediaFrame} ${styles.imageFrameOverlay}`}>
                 <Image
-                  src="/images/hero-editorial-pages.jpg"
-                  alt={`${group.title} print detail`}
+                  src={product.detailImage}
+                  alt={product.detailAlt}
                   fill
                   sizes="(max-width: 900px) 100vw, 90vw"
                   className={styles.image}
@@ -96,14 +96,14 @@ export default async function ProductPage({ params }) {
 
             <div className={styles.pdIndex}>
               <Reveal className={styles.pdIndexHead}>
-                <p className={styles.pdIndexLabel}>What we produce</p>
+                <p className={styles.pdIndexLabel}>Product details</p>
                 <div className={styles.pdIndexLine} aria-hidden="true" />
               </Reveal>
               <div className={styles.pdIndexList}>
-                {group.items.map((item, index) => (
-                  <Reveal key={item} className={styles.pdIndexItem} delay={Math.min(index * 40, 240)}>
+                {product.details.map((detail, index) => (
+                  <Reveal key={detail} className={styles.pdIndexItem} delay={Math.min(index * 40, 240)}>
                     <span className={styles.pdIndexNum}>{String(index + 1).padStart(2, '0')}</span>
-                    <p className={styles.pdIndexName}>{item}</p>
+                    <p className={styles.pdIndexName}>{detail}</p>
                     <span className={styles.pdIndexDot} aria-hidden="true" />
                   </Reveal>
                 ))}
@@ -140,15 +140,15 @@ export default async function ProductPage({ params }) {
           </div>
         </section>
 
-        <section className={styles.pdNext} aria-label="Next category">
+        <section className={styles.pdNext} aria-label="Next product">
           <div className={styles.pdNextInner}>
             <Reveal className={styles.pdNextReveal}>
               <div className={styles.pdNextMeta}>
-                <p className={styles.eyebrow}>Next category</p>
+                <p className={styles.eyebrow}>Next product</p>
                 <p className={styles.pdNextDesc}>Continue exploring our product range.</p>
               </div>
-              <Link href={`/products/${nextGroup.id}`} className={styles.pdNextLink}>
-                <span className={styles.pdNextTitle}>{nextGroup.title}</span>
+              <Link href={`/products/${nextProduct.id}`} className={styles.pdNextLink}>
+                <span className={styles.pdNextTitle}>{nextProduct.title}</span>
                 <span className={styles.pdNextArrow} aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h13" /><path d="m13 6 6 6-6 6" />
@@ -163,7 +163,7 @@ export default async function ProductPage({ params }) {
           <div className={styles.ctaContainer}>
             <Reveal>
               <p className={styles.eyebrow}>Start a project</p>
-              <h2 id="product-cta" className={styles.ctaTitle}>Need {group.title.toLowerCase()}?</h2>
+              <h2 id="product-cta" className={styles.ctaTitle}>Need {product.title.toLowerCase()}?</h2>
               <p className={styles.ctaText}>Tell us what you need and we’ll recommend the right format, material, and finish for your project.</p>
               <Link href="/contact" className={styles.ctaButton}>Request a quote</Link>
             </Reveal>

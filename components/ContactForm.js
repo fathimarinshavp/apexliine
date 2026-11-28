@@ -2,12 +2,14 @@
 
 const services = [
   'Digital Printing',
-  'Offset Printing',
-  'UV Printing',
-  'Binding Solutions',
-  'Graphic Design',
+  'Digital Special Effects Printing',
+  'Commercial Printing',
+  'Commercial Packaging',
+  'Promotional Gift Printing',
   'Large Format Printing',
-  'Custom Packaging',
+  'Post Press Work',
+  'Rigid Box Manufacturing',
+  'Binding',
 ];
 
 export default function ContactForm() {

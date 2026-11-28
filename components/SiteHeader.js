@@ -75,12 +75,13 @@ export default function SiteHeader() {
       <div className="site-header__inner shell">
         <Link className="site-header__brand" href="/#home" aria-label="Apexline Graphics LLC — home">
           <Image
-            src="/apexlogo.png"
+            src="/apex-line-logo-dark-ash.svg"
             alt="Apexline Graphics LLC"
-            width={180}
-            height={60}
+            width={2062}
+            height={234}
             priority
-            sizes="180px"
+            unoptimized
+            sizes="(max-width: 900px) 300px, 420px"
           />
         </Link>
 
@@ -147,6 +148,7 @@ export default function SiteHeader() {
           aria-label={open ? 'Close menu' : 'Open menu'}
           onClick={() => setOpen((value) => !value)}
         >
+          <span />
           <span />
           <span />
         </button>
